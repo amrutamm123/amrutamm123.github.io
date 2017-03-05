@@ -1,0 +1,18 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 81 to server version: 5.0.27-community-nt
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+
+mysql> create database test3;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> use test3;
+Database changed
+
+
+mysql> create table register1(username varchar(20),password varchar(20),firstname varchar(20),lastname varchar(20),email varchar(20) primary key,phone long,location varchar(20));
+Query OK, 0 rows affected (0.33 sec)
+
+mysql>
