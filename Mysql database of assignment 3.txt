@@ -1,0 +1,91 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 138 to server version: 5.0.27-community-nt
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+mysql> create database Company;
+Query OK, 1 row affected (0.19 sec)
+
+mysql> use Company;
+Database changed
+mysql> create table Employee(EmpNo int(5) primary key,Ename varchar(20),Job varchar(20),MGR int(5),HireDate date,Salary int(5), DeptNo int(5));
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> insert into Employee values(101,'Amruta Mane','Software Developer',111,'2015-9-7',20000,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into Employee values(102,'Priya Patil','Software Tester',112,'2016-4-12',15000,2);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into Employee values(103,'Neha More','Software Tester',112,'2017-4-19',12000,2);
+Query OK, 1 row affected (0.33 sec)
+
+
+mysql> insert into Employee values(104,'Raveena Deshmukh','Software Developer',114,'2014-7-17',25000,1);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into Employee values(105,'Pooja Patil','Software Developer',115,'2011-5-24',30000,1);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from Employee;
++-------+------------------+--------------------+------+------------+--------+--------+
+| EmpNo | Ename            | Job                | MGR  | HireDate   | Salary | DeptNo |
++-------+------------------+--------------------+------+------------+--------+--------+
+|   101 | Amruta Mane      | Software Developer |  111 | 2015-09-07 |  20000 | 1      |
+|   102 | Priya Patil      | Software Tester    |  112 | 2016-04-12 |  15000 | 2      |
+|   103 | Neha More        | Software Tester    |  113 | 2017-04-19 |  12000 | 2      |
+|   104 | Raveena Deshmukh | Software Developer |  114 | 2014-07-17 |  25000 | 1      |
+|   105 | Pooja Patil      | Software Developer |  115 | 2011-05-24 |  30000 | 1      |
++-------+------------------+--------------------+------+------------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> create table Department(DeptNo int(5) primary key,Dname varchar(20),Location varchar(20));
+Query OK, 0 rows affected (0.19 sec)
+
+
+mysql> insert into Department values(1,'Developer','pune');
+Query OK, 1 row affected (0.06 sec);
+
+mysql> insert into Department values(2,'Tester','mumbai');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into Department values(3,'Manager','mumbai');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from Department;
++--------+-----------+----------+
+| DeptNo | Dname     | Location |
++--------+-----------+----------+
+|      1 | Developer | pune     |
+|      2 | Tester    | mumbai   |
+|      3 | Manager   | mumbai   |
++--------+-----------+----------+
+3 rows in set (0.00 sec)
+
+
+
+mysql> select count(*) as 'Number of Employee',Department.DName from Employee inner join Department on Employee.DeptNo=Department.DeptNo group by Department.Dname;
++--------------------+-----------+
+| Number of Employee | DName     |
++--------------------+-----------+
+|                  3 | Developer |
+|                  2 | Tester    |
++--------------------+-----------+
+2 rows in set (0.00 sec)
+
+
+mysql> insert into Employee values(106,'Mrunal Desai','Software Developer',116,'2011-12-12',40000,1);
+Query OK, 1 row affected (0.09 sec)
+
+
+mysql> select count(*) as 'Number of Employee',Department.DName from Employee inner join Department on Employee.DeptNo=Department.DeptNo group by Department.Dname;
++--------------------+-----------+
+| Number of Employee | DName     |
++--------------------+-----------+
+|                  4 | Developer |
+|                  2 | Tester    |
++--------------------+-----------+
+2 rows in set (0.04 sec)
+
+mysql>
